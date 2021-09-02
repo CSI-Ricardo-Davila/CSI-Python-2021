@@ -96,24 +96,24 @@ print(type(age))
 
 What is the difference between "42" and 42.
 
- - Answer:
+ - Answer: "42" is a string and 42 is an integer.
 
 Define the boolean operators: >, <, ==, >=, <=
 
- - Answer:
+ - Answer: > means greater than(7>3), < means less than(3<4), == means equal to(9==9), >= means equal or greater than(6>=2x), and < means less than or equal(9<= 3x)
 
 How do you address an index in an list? Write a python code that assigns 34 to a new variable by accessing the value stored in:  
         arr = [4, 3, -1, 4, 34]
 
- - Answer:
+ - Answer: myVariable:int=arr[4]
 
 What is the first index of a list? Why?
 
- - Answer:
+ - Answer: The first index of a list is 0 because in coding, the first number and value is 0.
 
 Provide an original example of a null value. It must prove your understanding of the concept.
 
- - Answer:
+ - Answer: How much people in San Ignacio have covid at the moment.
 
 Type down any class notes below this sentence:
 

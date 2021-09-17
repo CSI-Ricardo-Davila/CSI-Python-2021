@@ -135,18 +135,23 @@ Evaluate the following code. Is the code written correctly? What would be the co
         print('This message has a syntax error!")
         print(Churrigueresco)
 
- - Answer:
+ - Answer: The code is incorrect because the prints should have had "". The correct code should have been print ("This message has a syntax error!") and the other one should have been print("Churrigeresco").
 
 Evaluate the following code. Is the code written correctly? What would be the correct code?
         someNumber=360
         print(' The Number is someNumber ')
 Expected:  The Number is 360
 
- - Answer:
+ - Answer: The code should have been SomeNumber=360
+print(f"The Number is {SomeNumber}")
 
 Define a function that takes 2 or more string parameters and prints a single line using them as part of a functional string. The function may do anything you chose but the function name and parameter names must be representative of what they are.
 
- - Answer:
+ - Answer: def FavoritePet(animal,breed)
+    print(f"My favorite pet is a {animal} and my favorite breed is {breed}")
+
+    animal =("dog")
+    breed = ("Boston Terrier")
   
 
 
@@ -159,7 +164,8 @@ Which code returns the length of the string s0:
 
 s0 = "What is my length? Store it as a number in a variable."
 
- - Answer:
+ - Answer: length = (len(s0))
+        print(length)
 
 How do you create a substring in python?
 Create a substring of s1 containing only my name. Store it in a variable called ss1.
@@ -167,11 +173,13 @@ https://www.freecodecamp.org/news/how-to-substring-a-string-in-python/
 
 s1 = "Hello Student! My name is Carlos Jose Cobián. I enjoy coding and video games!"
 
- - Answer: ss1 =
+ - Answer: ss1 = "Hello Student! My name is Carlos Jose Cobián. I enjoy coding and video games!"
+print(ss1[26:44])
 
 Capitalize every letter of ss1 using a function. Store it in a variable called SS1.
 
- - Answer: SS1 =
+ - Answer: SS1 ="Hello Student! My name is Carlos Jose Cobián. I enjoy coding and video games!"
+print(SS1.upper())
 
 
 This last section is not worth any points, but is worth looking into. It is good string manipulation practice and contains exercises that you may see in a pop quiz! 

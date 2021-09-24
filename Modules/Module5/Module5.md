@@ -71,9 +71,13 @@ print(f"Computer selected: {computerChoice}")
 Give a python example for each logic operator in the module image.
 
  - Answers:
-   - OR:
-   - AND: 
-   - NOT: 
+   - OR: x = 5
+      x < 10 or callable(x)
+   - AND: x=7 
+x < 10 and callable(x)
+   - NOT: x = 3
+not x < 10
+
 
 
 Type down any class notes below this sentence:

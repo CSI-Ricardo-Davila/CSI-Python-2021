@@ -71,12 +71,26 @@ print(f"Computer selected: {computerChoice}")
 Give a python example for each logic operator in the module image.
 
  - Answers:
-   - OR: x = 5
-      x < 10 or callable(x)
-   - AND: x=7 
-x < 10 and callable(x)
-   - NOT: x = 3
-not x < 10
+   - OR: x=34
+         y=3
+         if(x==0 or y==0):
+            print("false")
+         Esto es falso porque x no es igual a 0 y "y" no es igual a 0
+
+   - AND: x=34
+          y=3
+          if(x<0 and y==0)
+            print("false")
+         Esto es falso porque x no es menor que 0 y "y" no es igual a 0.
+
+   - NOT: x=34
+          y=3
+          if((not x>40) and y==3))
+            print("True")
+
+      Esto es cierto porque x no es mayor que 40 y como es "not" pues el resultado es cierto y la y si es igual a 3 así que el relutado es cierto.
+
+          
 
 
 

@@ -1,32 +1,33 @@
 import random
 
-choices = ["r0cK","p@pEr","$ci$$0r$"]
+MyChoice = input("Rock, Paper or Scissors")
 
-MyChoice = input("What is your choice?")
-print(f"Computer select: {MyChoice}")
+computerChoice = ["Rock", "Paper", "Scissors"]
+computerChoice = random.choice(computerChoice)
+print(f"Computer selected: {computerChoice}")
+print(f"I selected: {MyChoice}")
 
-ComputerChoice = random.choice(choices)
-print(f"Computer select: {ComputerChoice}")
+if(MyChoice == "Rock" and computerChoice== "Rock"):
+    print("It is a tie")
+elif(MyChoice == "Paper" and computerChoice== "Paper"):
+    print("It is a tie")
+elif(MyChoice == "Paper" and computerChoice== "Paper"):
+    print("It is a tie")
 
-if(ComputerChoice == MyChoice):
-    print("Tied")
-elif(ComputerChoice == "r0cK" and MyChoice == "p@pEr") :
-    print ("You losep²@")
-elif (ComputerChoice == "p@pEr" and MyChoice == "$ci$$0r$") :
-    print ("You lose")
-elif (ComputerChoice == "$ci$$0r$" and MyChoice == "p@pEr") :
-    print ("You lose")
-elif (ComputerChoice == "$ci$$0r$" and MyChoice == "r0cK") :
-    print ("You win")
-elif (ComputerChoice == "p@pEr" and MyChoice =="r0cK") :
-    print ("You win")
-elif (ComputerChoice == "r0cK" and MyChoice == "$ci$$0r$") :
-    print("You win")
-elif(ComputerChoice == "$ci$$0r$" and MyChoice == "$ci$$0r$") :
-    print ("Tied")
-elif(ComputerChoice == "r0cK" and MyChoice == "r0cK") :
-    print ("Tied")
-elif(ComputerChoice == "p@pEr" and MyChoice - "p@pEr" ) :
-    print("Tied")
+elif(MyChoice == "Rock" and computerChoice== "Paper"):
+    print("You lose!")
+elif(MyChoice == "Rock" and computerChoice== "Scissors"):
+    print("You just won!")
+
+elif(MyChoice == "Paper" and computerChoice== "Rock"):
+    print("You just won!")
+elif(MyChoice == "Paper" and computerChoice== "Scissors"):
+    print("You lose!")
+
+elif(MyChoice == "Scissors" and computerChoice== "Rock"):
+    print("You lose!")
+elif(MyChoice == "Scissors" and computerChoice== "Paper"):
+    print("You just won!")
+
 else:
-    print ("Something was wrong")
+    print("Something is not working")

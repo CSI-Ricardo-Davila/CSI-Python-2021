@@ -1,0 +1,9 @@
+{
+    "gun": "mp5",
+    "CartridgeCalibre": "9x19mm Parabellum",
+    "ammunition": "9x19mm PBP gzh",
+    "ProjectileVelocity_mps": 560,
+    "building": "Oriental Plaza",
+    "buildingHeight_m": 64,
+    "gravity": 9.8
+}

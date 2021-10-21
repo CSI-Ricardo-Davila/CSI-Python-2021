@@ -1,5 +1,9 @@
 import math
+import os
+import json
 from ExperimentalData import ExperimentalData
+from pathlib import Path
+
 # gun= "mp5"
 # CartridgeCalibre = "9x19mm Parabellum"
 # ammunition = "9x19mm PBP gzh"
@@ -14,9 +18,8 @@ def experiment(experimentalData:ExperimentalData):
     #Using the time and velocity,calculate how far it will travel#
     distance_m = experimentalData.ProjectileVelocity_mps * time_s
 
-    print(f"We will shoot the {experimentalData.gun} from {experimentalData.building}, which is {experimentalData.buildingHeight_m}m high. The {experimentalData.gun}'s catridge calibre is {experimentalData.CartridgeCalibre} and it is using the {experimentalData.ammunition} bullets. The {experimentalData.gun} shoots at {experimentalData.ProjectileVelocity_mps} m/s, and it took { round(time_s, 2) } seconds to hit the ground and it traveled {round(distance_m, 2) } meters.")
+    print(f"We will shoot the {experimentalData.gun} from {experimentalData.building}, which is {experimentalData.buildingHeight_m}m high. The {experimentalData.gun}'s catridge calibre is {experimentalData.CartridgeCalibre} and it is using the {experimentalData.ammunition} bullets. The {experimentalData.gun} shoots at {experimentalData.ProjectileVelocity_mps} m/s, it took { round(time_s, 2) } seconds to hit the ground and it traveled {round(distance_m, 2) } meters.")
 
-MyData = ExperimentalData("mp5", "9x19mm Parabellum","9x19mm PBP gzh",560,"Oriental Plaza", 64, 9.8)
 
 # experimentalData={
 # "gun" : "mp5",
@@ -27,6 +30,19 @@ MyData = ExperimentalData("mp5", "9x19mm Parabellum","9x19mm PBP gzh",560,"Orien
 # "buildingHeight_m" : 64,
 # "gravity": 9.8
 # }
+MyDataSet = [
+    ExperimentalData("mp5", "9x19mm Parabellum","9x19mm PBP gzh",560,"Oriental Plaza", 64, 9.8),
+    ExperimentalData("M4A1", "5.56x45mm NATO","5.56x45mm FMJ",957,"Oriental Plaza", 64, 9.8),
+    ExperimentalData("MCX", ".300 Blackout",".300 AAC Blackout AP",720,"Oriental Plaza", 64, 9.8),
+    ExperimentalData("Mk47", "7.62x39mm","7.62x39mm BP gzh",730,"Oriental Plaza", 64, 9.8),
+    ExperimentalData("mp9", "9x19mm Parabellum","9x19mm Pst gzh",457,"Oriental Plaza", 64, 9.8)
 
-experiment(MyData)
+]
 
+experiment(MyDataSet[0])
+
+myOutputPath = Path(__file__).parents[0]
+myOutputFilePath = os.path.join(myOutputPath, 'ExperimentalData.json') 
+
+with open(myOutputFilePath, 'w') as outfile:
+    json.dump(MyDataSet[0].__dict__,outfile)

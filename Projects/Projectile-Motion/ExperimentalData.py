@@ -8,6 +8,7 @@ class ExperimentalData:
         self.building = building
         self.buildingHeight_m = buildingHeight_m
         self.planet = planet
+        
     
 #función para calcular tiempo
     def calculateTime(self):

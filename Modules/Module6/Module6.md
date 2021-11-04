@@ -81,23 +81,30 @@ myObject = ExperimentData(**experimentJson)
 
 What does JSON Stand for?
 
- - Answer:
+ - Answer: JSON stands for Java Script Object Notation.
 
 Why are JSON formats important?
 
- - Answer:
+ - Answer: JSON is very important because with JSON's organizing data becomes easier. With JSON's information is store in a more organized and easy way.
 
 Create an example of a JSON object with at least 4 values. It may represent anything but it must be original.
 
- - Answer:
+ - Answer: 
+ RicardoJSON = {
+
+"school" : "Colegio San Ignacio",
+	"age" : "14",
+	"grade" : "10",
+  "sport":"football"
+}
 
 What is the difference between serialization and deserialization?
 
- - Answer:
+ - Answer: Serialization is converting an object into a string that represents this object. Deserialization is the reverse operation of serialization.
 
 Research data persistance. What did you find?
 
- - Answer: 
+ - Answer: Data persistence means that the data survives after the process in which it was created has been removed. 
 
 Type down any class notes below this sentence:
 

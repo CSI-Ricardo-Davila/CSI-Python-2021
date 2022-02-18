@@ -36,10 +36,31 @@ steps = ["""
           |         OO
           |        ---- 
           |          | 
+          |       ---|
+          |          |
+          |          
+          |         
+         """,   
+        
+         """            
+          |----------|
+          |         OO
+          |        ---- 
+          |          | 
           |       ---|---
           |          |
           |
           |
+         """,
+            """            
+          |----------|
+          |         OO
+          |        ---- 
+          |          | 
+          |       ---|---
+          |          |
+          |          ^
+          |         ^
          """,
          """            
           |----------|
@@ -53,9 +74,9 @@ steps = ["""
          """
          ]
 
-print(steps[3]) 
+print(steps[0]) 
 
-
+used_letters =[]
 invalid_caracters= ["!","@","~","`","#","$","%","^","&","*","(",")","-","_","+","=","[","]","{","}","|",":",";","'","<",",",".",">","/","?"]
 invalid_numbers = ["0","1","2","3","4","5","6","7","8","9"]
 def get_word():
@@ -71,8 +92,9 @@ def get_input():
             print("error")
             continue
 
-        # if((letter)== letter):
-        #     print("You already used this letter")
+        if((letter)in used_letters):
+            print("You already used this letter")
+            continue
 
         if(letter in invalid_numbers):
             print("error")
@@ -81,7 +103,15 @@ def get_input():
         if(letter in invalid_caracters):
             print("error")
             continue
-
+        used_letters.append(letter)
         return letter
 
 print(get_input())
+
+def print_word():
+    temp:str = ""
+    len(word)
+     for (letter in word)
+      :
+      for(matches)
+      {temp:"" or ,letter}

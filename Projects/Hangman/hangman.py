@@ -72,7 +72,6 @@ steps = ["""
           |          ^
           |         ^ ^
          """]
-#  int var 0
 
 #La lista de used_letters se utiliza para poner en una lista las letras de la palabra que hay que adivinar para que una vez adivine la primera letra, verifique si está en esta lista y puede seguir corriendo el código
 # used_letters =[]
@@ -92,7 +91,7 @@ def get_word():
 # esta variable pone el resultado de la funcion anterior en ua variable para así utilizarla en otras funciones y lógicas más adelante.
 my_word = get_word()
 
-# esta funcion establece las limitaciones que tiene la letra adivinida
+# esta funcion establece las limitaciones que tiene la letra adivinida utilizando lógicas
 def get_input():
     
     while(True):
@@ -119,7 +118,7 @@ def get_input():
 
 # esta función te imprime la palabra según la vayas adivinando. Si la letra que adivinaste está bien, se imprime la letra seleccionada en los lugares que corresponde, si está incorrecta, se imprimirán underscores en los lugares que no hayas adivinado.
 def print_word():
-    #  temp es una variable sin nada que se irá contruyendo según la lógica de esta función
+    #  temp es una variable vacía que se irá contruyendo según la lógica de esta función
     temp:str = ""
     # len(word)
     for letter in my_word:

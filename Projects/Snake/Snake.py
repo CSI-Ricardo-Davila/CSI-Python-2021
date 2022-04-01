@@ -23,7 +23,12 @@ snake_block = 10                                        #This line of code sets 
 snake_speed = 15                                      #This line of code sets the speed of the snake
 
 font_style = pygame.font.SysFont("bahnschrift",25)               #This line of code sets the font for the game
-score_font = pygame.font.SysFont("comicsansms", 35)
+score_font = pygame.font.SysFont("comicsansms", 35)                  #This line of code sets the font for the game
+
+def Your_score(score):   #This function displays the score of the player which is equal to the lenght of the snake minus 1
+    value = score_font.render("Your Score: " + str(score), True, yellow)
+    dis.blit(value, [0, 0])
+ 
 
 def our_snake(snake_block, snake_list):                     #This function draws the body of the snake
     for x in snake_list:
@@ -66,67 +71,67 @@ def gameLoop():
                     if event.key == pygame.K_c:                     #This restarts the the game if c is pressed
                         gameLoop()
 
-        for event in pygame.event.get():                     #This line of code runs a forloop over every event that will be in a set list. 
-                    # print(event)   #prints out all the actions that take place on the screen
-                if event.type==pygame.QUIT:                      #This line of code says that when the program detects an attempt to close the program, it will change the game_over variable to True, and this will end the game.
-                        game_over=True                               #This line of code gives the variable 'game_over' a True value, which then causes the game to end.
-                if event.type == pygame.KEYDOWN:                 #This line of code uses the functions of KEYDOWN to move the snake
-                    if event.key == pygame.K_LEFT:               #This line of code moves the snake to the left.
-                            x1_change = -snake_block
-                            y1_change = 0
-                    elif event.key == pygame.K_RIGHT:            #This line of code moves the snake to the right.
-                            x1_change = snake_block
-                            y1_change = 0
-                    elif event.key == pygame.K_UP:              #This line of code moves the snake up.
-                            y1_change = -snake_block
-                            x1_change = 0
-                    elif event.key == pygame.K_DOWN:            #This line of code moves the snake down.
-                            y1_change = snake_block
-                            x1_change = 0
-                
-        if  x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0: #This line of code is saying that if the snake block hits any of the edges of the screen, the game will end.
-                    game_over = True
+            for event in pygame.event.get():                     #This line of code runs a forloop over every event that will be in a set list. 
+                        # print(event)   #prints out all the actions that take place on the screen
+                    if event.type==pygame.QUIT:                      #This line of code says that when the program detects an attempt to close the program, it will change the game_over variable to True, and this will end the game.
+                            game_over=True                               #This line of code gives the variable 'game_over' a True value, which then causes the game to end.
+                    if event.type == pygame.KEYDOWN:                 #This line of code uses the functions of KEYDOWN to move the snake
+                        if event.key == pygame.K_LEFT:               #This line of code moves the snake to the left.
+                                x1_change = -snake_block
+                                y1_change = 0
+                        elif event.key == pygame.K_RIGHT:            #This line of code moves the snake to the right.
+                                x1_change = snake_block
+                                y1_change = 0
+                        elif event.key == pygame.K_UP:              #This line of code moves the snake up.
+                                y1_change = -snake_block
+                                x1_change = 0
+                        elif event.key == pygame.K_DOWN:            #This line of code moves the snake down.
+                                y1_change = snake_block
+                                x1_change = 0
+                    
+            if  x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0: #This line of code is saying that if the snake block hits any of the edges of the screen, the game will end.
+                        game_over = True
 
-        x1 += x1_change                                     #This line of code holds the updating values of the x coordinate.
-        y1 += y1_change                                     #This line of code holds the updating values of the y coordinate.
-        
-        dis.fill(blue)                                     #This line of code says that the display screen will be blue
-        pygame.draw.rect(dis, black, [x1, y1, snake_block, snake_block])      #This line of code draws a rectangle in the display at the given cordinates
-        pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block])#This line of code draws a rectangle in the display at the given cordinates
-        
-        #The following group of code draws the head, the body, and other elements of the snake.
-        snake_Head = []
-        snake_Head.append(x1)
-        snake_Head.append(y1)
-        snake_List.append(snake_Head)
-        if len(snake_List) > Length_of_snake:
-            del snake_List[0]
- 
-        for x in snake_List[:-1]:
-            if x == snake_Head:
-                game_close = True
- 
-        our_snake(snake_block, snake_List)
- 
- 
-        pygame.display.update()                             #This line of code updates the screen
- 
-        if x1 == foodx and y1 == foody:                     #This if statement says that if the coordinates of the food are equal to the coordinates of the head, it will add to the length of the snake.
-            foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0       #This line of code gives the food an x coordinate
-            foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0      #This line of code gives the food an y coordinate
-            Length_of_snake += 1                            #This line of code adds length to the snake
- 
-      
+            x1 += x1_change                                     #This line of code holds the updating values of the x coordinate.
+            y1 += y1_change                                     #This line of code holds the updating values of the y coordinate.
             
-        # if x1 == foodx and y1 == foody:                     #This line of code is saying that if the snake passes over the coordinates where the food is, it will say Yummy!!
-        #     print("Yummy!!")
-        # clock.tick(snake_speed)                                      #This line of code sets the speed for the snake
+            dis.fill(blue)                                     #This line of code says that the display screen will be blue
+            # pygame.draw.rect(dis, black, [x1, y1, snake_block, snake_block])      #This line of code draws a rectangle in the display at the given cordinates
+            pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block])#This line of code draws a rectangle in the display at the given cordinates
             
-            # pygame.draw.rect(dis,blue,[200,150,10,10])           #This line of code draws a rectangle in the display at the given cordinates
-            
-        # message("You lost", red)                                   #This lines of code display a message saying "You Lost" after the player has lost.
-        # pygame.display.update()                                   #This lines of code display a message saying "You Lost" after the player has lost.
-        # time.sleep(2)                                   #This lines of code display a message saying "You Lost" after the player has lost.
+            #The following group of code draws the head, the body, and other elements of the snake.
+            snake_Head = []
+            snake_Head.append(x1)
+            snake_Head.append(y1)
+            snake_List.append(snake_Head)
+            if len(snake_List) > Length_of_snake:
+                del snake_List[0]
+    
+            for x in snake_List[:-1]:
+                if x == snake_Head:
+                    game_close = True
+    
+            our_snake(snake_block, snake_List)
+            Your_score(Length_of_snake - 1)                     #This is the score that will be displayed on the screen (length of snake - 1)
+    
+            pygame.display.update()                             #This line of code updates the screen
+    
+            if x1 == foodx and y1 == foody:                     #This if statement says that if the coordinates of the food are equal to the coordinates of the head, it will add to the length of the snake.
+                foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0       #This line of code gives the food an x coordinate
+                foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0      #This line of code gives the food an y coordinate
+                Length_of_snake += 1                            #This line of code adds length to the snake
+    
+            clock.tick(snake_speed)
+                
+            # if x1 == foodx and y1 == foody:                     #This line of code is saying that if the snake passes over the coordinates where the food is, it will say Yummy!!
+            #     print("Yummy!!")
+            # clock.tick(snake_speed)                                      #This line of code sets the speed for the snake
+                
+                # pygame.draw.rect(dis,blue,[200,150,10,10])           #This line of code draws a rectangle in the display at the given cordinates
+                
+            # message("You lost", red)                                   #This lines of code display a message saying "You Lost" after the player has lost.
+            # pygame.display.update()                                   #This lines of code display a message saying "You Lost" after the player has lost.
+            # time.sleep(2)                                   #This lines of code display a message saying "You Lost" after the player has lost.
 
         pygame.quit()           #This line of code unitializes the game that has been started
         quit()                  #This line of code unitializes everything

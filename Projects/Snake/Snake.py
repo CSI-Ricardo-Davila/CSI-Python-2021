@@ -5,30 +5,35 @@ import random           #This line of code imports random and the functions that
 
 pygame.init()           # This line of code initializes the game
 
-blue=(0,0,255)#Establishes the snakes color with its RGB number. 
+blue=(50,153,213)#Establishes the snakes color with its RGB number. 
 white = (255, 255, 255)
 black = (0, 0, 0)
-red=(255,0,0)#Establishes the color with its RGB number.
+yellow = (255,255,102)
+green = (0,255,0)
+red=(213,50,80)#Establishes the color with its RGB number.
 
-dis_width =800                      #This line of code sets the width of the display screen
-dis_height = 600                     #This line of code sets the height of the display screen
+dis_width =600                      #This line of code sets the width of the display screen
+dis_height = 400                     #This line of code sets the height of the display screen
 dis= pygame.display.set_mode((dis_width,dis_width))      #This line of code creates the screen that will be used for the game
 
 pygame.display.set_caption('Snake game by Edureka')      #This line of code gives the name 'Snake game by Edureka' to the screen
 
 clock = pygame.time.Clock()                          #This line of code is to see the time frame while the snake is moving
 snake_block = 10                                        #This line of code sets the size of the snake block
-snake_speed = 30                                        #This line of code sets the speed of the snake
+snake_speed = 15                                      #This line of code sets the speed of the snake
 
-font_style = pygame.font.SysFont(None,50)               #This line of code sets the font for the game
+font_style = pygame.font.SysFont("bahnschrift",25)               #This line of code sets the font for the game
+score_font = pygame.font.SysFont("comicsansms", 35)
 
-
+def our_snake(snake_block, snake_list):                     #This function draws the body of the snake
+    for x in snake_list:
+        pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block])
 
 
 
 def message(msg,color):                                 #This line of code defines the function called message, which displays messages to on the playing screen
     mesg = font_style.render(msg,True,color)            #This line of code sets the parameters of the variable called mesg
-    dis.blit(mesg, [dis_width/2, dis_height/2])         #This line of code sets the coordinates will the text will appear
+    dis.blit(mesg, [dis_width/6, dis_height/3])         #This line of code sets the coordinates will the text will appear
 
 def gameLoop():  
     game_over=False                                          #This line of code creates a booleang variale that is set to False, meaning that the game is not over unitl this variable is true.
@@ -40,6 +45,9 @@ def gameLoop():
     x1_change = 0                                           #This line of code holds the updating values of the x coordinate. 
     y1_change = 0                                           #This line of code holds the updating values of the y coordinate.
  
+    snake_List = []                                         #This line of code is an empty variable to store the length and the parts of the body that are being added to the snake
+    Length_of_snake = 1                                     #This line of code is a variable equal to 1 that will later be used to add length to the snake.
+
     foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0   #This line of code will create a food on the screen on the given x coordinate calculation
     foody = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0   #This line of code will create a food on the screen on the given y coordinate calculation
 
@@ -81,14 +89,38 @@ def gameLoop():
 
         x1 += x1_change                                     #This line of code holds the updating values of the x coordinate.
         y1 += y1_change                                     #This line of code holds the updating values of the y coordinate.
-        dis.fill(white)                                     #This line of code says that the display screen will be white
+        
+        dis.fill(blue)                                     #This line of code says that the display screen will be blue
         pygame.draw.rect(dis, black, [x1, y1, snake_block, snake_block])      #This line of code draws a rectangle in the display at the given cordinates
-        pygame.draw.rect(dis, blue, [foodx, foody, snake_block, snake_block])
+        pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block])#This line of code draws a rectangle in the display at the given cordinates
+        
+        #The following group of code draws the head, the body, and other elements of the snake.
+        snake_Head = []
+        snake_Head.append(x1)
+        snake_Head.append(y1)
+        snake_List.append(snake_Head)
+        if len(snake_List) > Length_of_snake:
+            del snake_List[0]
+ 
+        for x in snake_List[:-1]:
+            if x == snake_Head:
+                game_close = True
+ 
+        our_snake(snake_block, snake_List)
+ 
+ 
         pygame.display.update()                             #This line of code updates the screen
+ 
+        if x1 == foodx and y1 == foody:                     #This if statement says that if the coordinates of the food are equal to the coordinates of the head, it will add to the length of the snake.
+            foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0       #This line of code gives the food an x coordinate
+            foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0      #This line of code gives the food an y coordinate
+            Length_of_snake += 1                            #This line of code adds length to the snake
+ 
+      
             
-        if x1 == foodx and y1 == foody:                     #This line of code is saying that if the snake passes over the coordinates where the food is, it will say Yummy!!
-            print("Yummy!!")
-        clock.tick(snake_speed)                                      #This line of code sets the speed for the snake
+        # if x1 == foodx and y1 == foody:                     #This line of code is saying that if the snake passes over the coordinates where the food is, it will say Yummy!!
+        #     print("Yummy!!")
+        # clock.tick(snake_speed)                                      #This line of code sets the speed for the snake
             
             # pygame.draw.rect(dis,blue,[200,150,10,10])           #This line of code draws a rectangle in the display at the given cordinates
             
